@@ -14,7 +14,7 @@ Benvenuto nel repository ufficiale di **SP3CT4R**, un brand italiano specializza
 Welcome to the official repository of **SP3CT4R**, an Italian brand specializing in streetwear fashion. This repository contains the source code for the proprietary SP3CT4R e-commerce application platform.
 
 ## About SP3CT4R
-**SP3CT4R** is a modern brand dedicated to sell our T-short,pants and our accessory. Our mission is to combine the quality of Italian design with cutting-edge technology to provide a unique experience for our users.
+**SP3CT4R** is a modern brand dedicated to sell our T-shirt,pants and our accessory. Our mission is to combine the quality of Italian design with cutting-edge technology to provide a unique experience for our users.
 
 ## Contacts & Official Channels
 * **Brand Name:** SP3CT4R
