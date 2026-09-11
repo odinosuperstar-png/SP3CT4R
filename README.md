@@ -20,3 +20,4 @@ Welcome to the official repository of **SP3CT4R**, an Italian brand specializing
 * **Brand Name:** SP3CT4R
 * **Country of Origin:** Italy 🇮🇹
 * **Official Support Email:** sp3ct4r.business@gmail.com
+* **Founder:** Alessandro Mori
