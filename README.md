@@ -21,3 +21,6 @@ Welcome to the official repository of **SP3CT4R**, an Italian brand specializing
 * **Country of Origin:** Italy 🇮🇹
 * **Official Support Email:** sp3ct4r.business@gmail.com
 * **Founder:** Alessandro Mori
+* **Age:**15 years old
+* **Website:** sp3ct4r.vercel.app
+
