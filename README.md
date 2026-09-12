@@ -22,5 +22,14 @@ Welcome to the official repository of **SP3CT4R**, an Italian brand specializing
 * **Official Support Email:** sp3ct4r.business@gmail.com
 * **Founder:** Alessandro Mori
 * **Age:**15 years old
-* **Website:** sp3ct4r.vercel.app
+
+## Official Channels & Social Ecosystem
+Connect with the project across our official platforms:
+
+* **Official Website:** sp3ct4r.vercel.app
+* **Reddit Community:** https://www.reddit.com/r/SP3CT4R/comments/1wdq0vc/sp3ct4r/
+* **Instagram:** @sp3ct4r
+* **TikTok:** SP3CT4R
+* **X (Twitter):** @sp3ct4rClothing
+* **YouTube:** @SP3CT4R
 
