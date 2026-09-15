@@ -17,12 +17,14 @@ Welcome to the official repository of **SP3CT4R**, an Italian brand specializing
 **SP3CT4R** is a modern brand dedicated to sell our T-shirt,pants and our accessory. Our mission is to combine the quality of Italian design with cutting-edge technology to provide a unique experience for our users.
 
 ## Contacts & Official Channels
-* **Brand Name:** SP3CT4R
+* **Brand Name**: SP3CT4R®
+* * **Trademark**: SP3CT4R® is a registered trademark under registration process.
 * **Country of Origin:** Italy 🇮🇹
 * **Official Support Email:** sp3ct4r.business@gmail.com
 * **Founder:** Alessandro Mori
 * **Age:**15 years old
-
+* **Location**: La Spezia (Liguria)
+* **Society:** Anomalies Lab
 ## Official Channels & Social Ecosystem
 Connect with the project across our official platforms:
 
@@ -34,3 +36,8 @@ Connect with the project across our official platforms:
 * **YouTube:** @SP3CT4R
 ## Drop 
 * **Drop 01:** Out: sunday 20 september 2026
+ ---
+### 🔒 Legal Notice
+© 2026 Anomalies Lab. All rights reserved. 
+SP3CT4R® and its structural design assets are protected under international trademark laws. 
+Unauthorized duplication of source code, graphics, or clothing patterns is strictly prohibited.
