@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout — SP3CT4R{% endblock %}
+
+{% block extra_head %}
+<!-- Libreria ufficiale Stripe.js: gestisce in modo sicuro i campi della carta -->
+<script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+{% block content %}
+<div class="checkout-page">
+
+    <div class="checkout-main">
+        <h1 class="checkout-title">Checkout</h1>
+
+        <!-- Indicatore di avanzamento tra i 3 step -->
+        <div class="checkout-steps-indicator">
+            <div class="step-dot active" data-step="1"><span>1</span>Spedizione</div>
+            <div class="step-line"></div>
+            <div class="step-dot" data-step="2"><span>2</span>Metodo</div>
+            <div class="step-line"></div>
+            <div class="step-dot" data-step="3"><span>3</span>Pagamento</div>
+        </div>
+
+        <!-- ================================================================
+             STEP 1 — Indirizzo di spedizione
+             ================================================================ -->
+        <section class="checkout-step active" id="step-1">
+            <h2 class="step-title">01 / Indirizzo di Spedizione</h2>
+
+            <form id="shipping-form" class="checkout-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="input-nome">Nome</label>
+                        <input type="text" id="input-nome" name="nome" placeholder="Mario" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-cognome">Cognome</label>
+                        <input type="text" id="input-cognome" name="cognome" placeholder="Rossi" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-email">Email</label>
+                    <input type="email" id="input-email" name="email" placeholder="mario.rossi@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-indirizzo">Indirizzo</label>
+                    <input type="text" id="input-indirizzo" name="indirizzo" placeholder="Via Roma, 12" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="input-citta">Città</label>
+                        <input type="text" id="input-citta" name="citta" placeholder="Milano" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-cap">CAP</label>
+                        <input type="text" id="input-cap" name="cap" placeholder="20100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-paese">Paese</label>
+                        <select id="input-paese" name="paese" required>
+                            <option value="IT">Italia</option>
+                            <option value="FR">Francia</option>
+                            <option value="DE">Germania</option>
+                            <option value="ES">Spagna</option>
+                            <option value="CH">Svizzera</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-telefono">Telefono</label>
+                    <input type="tel" id="input-telefono" name="telefono" placeholder="+39 333 1234567" required>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-full clip-btn step-next-btn" data-next="2">
+                    Continua alla Spedizione
+                </button>
+            </form>
+        </section>
+
+        <!-- ================================================================
+             STEP 2 — Tipo di spedizione
+             ================================================================ -->
+        <section class="checkout-step" id="step-2">
+            <h2 class="step-title">02 / Metodo di Spedizione</h2>
+
+            <div class="shipping-options">
+                <label class="shipping-option-card selected">
+                    <input type="radio" name="metodo_spedizione" value="standard" checked>
+                    <div class="shipping-option-info">
+                        <span class="shipping-option-name">Spedizione Standard</span>
+                        <span class="shipping-option-time">Consegna in 3-5 giorni lavorativi</span>
+                    </div>
+                    <span class="shipping-option-price">
+                        {% if spedizione_standard == 0 %}Gratuita{% else %}€{{ "%.2f"|format(spedizione_standard) }}{% endif %}
+                    </span>
+                </label>
+
+                <label class="shipping-option-card">
+                    <input type="radio" name="metodo_spedizione" value="express">
+                    <div class="shipping-option-info">
+                        <span class="shipping-option-name">Spedizione Express</span>
+                        <span class="shipping-option-time">Consegna in 24-48 ore</span>
+                    </div>
+                    <span class="shipping-option-price">€{{ "%.2f"|format(spedizione_express) }}</span>
+                </label>
+            </div>
+
+            <div class="step-nav">
+                <button type="button" class="btn btn-ghost clip-btn step-prev-btn" data-prev="1">Indietro</button>
+                <button type="button" class="btn btn-primary clip-btn step-next-btn" data-next="3">Continua al Pagamento</button>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             STEP 3 — Cassa e pagamento
+             ================================================================ -->
+        <section class="checkout-step" id="step-3">
+            <h2 class="step-title">03 / Cassa e Pagamento</h2>
+
+            <!-- Express Checkout: pulsanti grafici per i metodi rapidi.
+                 L'attivazione funzionale completa di Apple Pay / Google Pay avviene
+                 tramite il Payment Request Button di Stripe (richiede verifica del
+                 dominio); PayPal e Klarna richiedono l'abilitazione dei rispettivi
+                 metodi di pagamento nella Dashboard Stripe. -->
+            <div class="express-checkout">
+                <p class="express-checkout-label">Checkout rapido</p>
+                <div class="express-buttons">
+                    <button type="button" class="btn-express btn-apple-pay" id="btn-apple-pay">
+                        &#63743; Pay
+                    </button>
+                    <button type="button" class="btn-express btn-paypal" id="btn-paypal">
+                        Pay<span class="paypal-pal">Pal</span>
+                    </button>
+                    <button type="button" class="btn-express btn-klarna" id="btn-klarna">
+                        Klarna · 3 rate
+                    </button>
+                </div>
+                <div class="divider-or"><span>oppure paga con carta</span></div>
+            </div>
+
+            <!-- Form di pagamento con carta -->
+            <form id="payment-form" class="checkout-form">
+                <div class="form-group">
+                    <label for="input-titolare">Nome del titolare della carta</label>
+                    <input type="text" id="input-titolare" name="titolare" placeholder="Come scritto sulla carta" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Dati Carta</label>
+                    <!--
+                        Campo Stripe Elements: numero carta, scadenza e CVV vengono
+                        gestiti da Stripe all'interno di un iframe isolato e protetto.
+                        Questi dati sensibili non transitano MAI dal nostro server,
+                        garantendo la piena conformità PCI-DSS.
+                    -->
+                    <div id="card-element" class="stripe-card-element clip-btn"></div>
+                    <div id="card-errors" class="card-errors" role="alert"></div>
+                </div>
+
+                <p class="secure-badge">&#128274; Pagamento sicuro e crittografato — i tuoi dati sono protetti</p>
+
+                <div class="step-nav">
+                    <button type="button" class="btn btn-ghost clip-btn step-prev-btn" data-prev="2">Indietro</button>
+                    <button type="submit" id="submit-payment-btn" class="btn btn-primary clip-btn btn-cta-final">
+                        <span id="btn-text">CONFERMA E PAGA ORA</span>
+                        <span id="btn-spinner" class="spinner hidden"></span>
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <!-- ================================================================
+         RIEPILOGO ORDINE
+         ================================================================ -->
+    <aside class="checkout-summary clip-panel">
+        <h3>Riepilogo Ordine</h3>
+
+        <div class="summary-items">
+            {% for articolo in articoli %}
+            <div class="summary-item">
+                <img src="{{ articolo.immagine }}" alt="{{ articolo.nome }}">
+                <div class="summary-item-info">
+                    <p>{{ articolo.nome }}</p>
+                    <span>Quantità: {{ articolo.quantita }}</span>
+                </div>
+                <span class="summary-item-price">€{{ "%.2f"|format(articolo.subtotale) }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="summary-totals">
+            <div class="summary-row">
+                <span>Subtotale</span>
+                <span>€{{ "%.2f"|format(totale) }}</span>
+            </div>
+            <div class="summary-row">
+                <span>Spedizione</span>
+                <span id="summary-shipping">
+                    {% if spedizione_standard == 0 %}Gratuita{% else %}€{{ "%.2f"|format(spedizione_standard) }}{% endif %}
+                </span>
+            </div>
+            <div class="summary-row summary-total">
+                <span>Totale</span>
+                <span id="summary-total">€{{ "%.2f"|format(totale + spedizione_standard) }}</span>
+            </div>
+        </div>
+    </aside>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Dati passati dal backend (Jinja2) al file JavaScript esterno checkout.js
+    const STRIPE_PUBLIC_KEY = "{{ stripe_public_key }}";
+    const TOTALE_PRODOTTI = {{ totale }};
+    const SPEDIZIONE_STANDARD = {{ spedizione_standard }};
+    const SPEDIZIONE_EXPRESS = {{ spedizione_express }};
+</script>
+<script src="{{ url_for('static', filename='js/checkout.js') }}"></script>
+{% endblock %}

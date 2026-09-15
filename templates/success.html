@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Ordine Confermato — SP3CT4R{% endblock %}
+
+{% block content %}
+<div class="outcome-page">
+    <div class="outcome-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6"/></svg>
+    </div>
+    <h1>Pagamento completato</h1>
+    <p>
+        Il tuo ordine SP3CT4R è stato confermato. Riceverai a breve un'email con
+        il riepilogo e i dettagli di tracciamento della spedizione.
+    </p>
+    <a href="{{ url_for('main.shop') }}" class="btn btn-primary clip-btn">Torna al Catalogo</a>
+</div>
+{% endblock %}

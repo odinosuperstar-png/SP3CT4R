@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}SP3CT4R — Techwear per l'era digitale{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <!-- ============================================================
+         HERO — messaggio di brand + grafica lineare generata via SVG
+         (al posto di una fotografia stock, per restare coerenti con
+         l'estetica tecnica/wireframe del brand)
+         ============================================================ -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">SS26 / COLLEZIONE COMPLETA</p>
+            <h1 class="hero-title">Equipaggiati per la città che non si ferma mai.</h1>
+            <p class="hero-description">
+                SP3CT4R progetta capi tecnici pensati per il movimento urbano: tessuti
+                funzionali, costruzioni modulari e un linguaggio visivo che nasce
+                dall'ingegneria, non dalla moda.
+            </p>
+            <div class="hero-actions">
+                <a href="{{ url_for('main.shop') }}" class="btn btn-primary clip-btn">Esplora la collezione</a>
+                <a href="{{ url_for('main.shop') }}?categoria=Giacche" class="btn btn-ghost clip-btn">Vedi le giacche</a>
+            </div>
+        </div>
+
+        <div class="hero-graphic clip-panel">
+            <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+                <!-- Silhouette lineare stilizzata di una giacca tecnica, disegnata a mano -->
+                <path d="M60 30 L80 18 L100 28 L120 18 L140 30 L150 55 L135 65 L130 220 L70 220 L65 65 L50 55 Z" />
+                <path d="M80 18 L85 40 L100 48 L115 40 L120 18" />
+                <line x1="100" y1="48" x2="100" y2="220" stroke-dasharray="4 4" />
+                <circle cx="100" cy="70" r="2.5" fill="currentColor" />
+                <circle cx="100" cy="100" r="2.5" fill="currentColor" />
+                <circle cx="100" cy="130" r="2.5" fill="currentColor" />
+                <path d="M65 90 L45 100 L45 150 L65 150" />
+                <path d="M135 90 L155 100 L155 150 L135 150" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         PRODOTTI IN EVIDENZA
+         ============================================================ -->
+    <div class="section-heading">
+        <h2>In evidenza</h2>
+        <span class="mono-tag">SELEZIONE / {{ prodotti_in_evidenza|length }} PEZZI</span>
+    </div>
+
+    <div class="product-grid">
+        {% for prodotto in prodotti_in_evidenza %}
+        {% include "partials/product_card.html" %}
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

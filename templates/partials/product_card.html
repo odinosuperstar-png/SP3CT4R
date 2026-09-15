@@ -1,0 +1,20 @@
+<!--
+    Card prodotto riutilizzabile.
+    Richiede una variabile "prodotto" nel contesto del template chiamante,
+    tipicamente inclusa dentro un ciclo "for" sulla lista dei prodotti.
+-->
+<article class="product-card">
+    <a href="{{ url_for('main.product_detail', id_prodotto=prodotto.id) }}" class="product-card-media">
+        <img src="{{ prodotto.immagine }}" alt="{{ prodotto.nome }}" loading="lazy">
+    </a>
+    <button class="quick-add-btn" onclick="aggiungiAlCarrello({{ prodotto.id }})">
+        Aggiungi Rapido
+    </button>
+    <div class="product-card-info">
+        <p class="product-card-category">{{ prodotto.categoria|upper }}</p>
+        <a href="{{ url_for('main.product_detail', id_prodotto=prodotto.id) }}">
+            <h3 class="product-card-name">{{ prodotto.nome }}</h3>
+        </a>
+        <p class="product-card-price">€{{ "%.2f"|format(prodotto.prezzo) }}</p>
+    </div>
+</article>

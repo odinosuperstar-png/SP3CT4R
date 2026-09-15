@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SP3CT4R — Techwear per l'era digitale{% endblock %}</title>
+    <meta name="description" content="SP3CT4R — abbigliamento streetwear e techwear per la città.">
+
+<!-- Open Graph / Meta tag per Social e AI Crawler -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SP3CT4R® | Official Techwear Drop">
+    <meta property="og:description" content="Developed by Anomalies Lab. Limited drop of 20 exclusive techwear pieces. Out: Sunday, 20 September 2026.">
+    <meta property="og:image" content="{{ url_for('static', filename='img/logo-og.png') }}">
+    <meta property="og:url" content="https://sp3ct4r.vercel.app">
+    <meta property="og:site_name" content="SP3CT4R">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_head %}{% endblock %}
+<meta name="google-site-verification" content="3LOFEXtQVwu_0P02P-OwdYzKqLCRrx3z7PiOkoCOsv0" />
+</head>
+<body>
+
+    <!-- ============================================================
+         HEADER — logo, navigazione principale, icone Profilo/Wishlist/Carrello
+         ============================================================ -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="{{ url_for('main.home') }}" class="logo">SP3CT4<span>R</span></a>
+
+            <nav class="main-nav">
+                <a href="{{ url_for('main.home') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('main.shop') }}" class="nav-link">Shop</a>
+                <a href="{{ url_for('main.shop') }}?categoria=Giacche" class="nav-link">Giacche</a>
+                <a href="{{ url_for('main.shop') }}?categoria=Accessori" class="nav-link">Accessori</a>
+            </nav>
+
+            <div class="header-icons">
+                <button class="icon-btn" aria-label="Area profilo" title="Profilo">
+                    <svg viewBox="0 0 24 24"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Z"/><path d="M4 20.5c1.4-3.6 4.6-5.5 8-5.5s6.6 1.9 8 5.5"/></svg>
+                </button>
+                <button class="icon-btn" aria-label="Wishlist" title="Wishlist">
+                    <svg viewBox="0 0 24 24"><path d="M12 20.2s-7.3-4.4-9.7-9C.8 7.7 2.4 4 6 4c2 0 3.4 1 6 3.5C14.6 5 16 4 18 4c3.6 0 5.2 3.7 3.7 7.2-2.4 4.6-9.7 9-9.7 9Z"/></svg>
+                </button>
+                <button class="icon-btn cart-toggle" id="cart-toggle-btn" aria-label="Apri il carrello" title="Carrello">
+                    <svg viewBox="0 0 24 24"><path d="M4 8h16l-1.3 11.2a2 2 0 0 1-2 1.8H7.3a2 2 0 0 1-2-1.8L4 8Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================
+         CART DRAWER — pannello laterale del carrello (nascosto di default)
+         ============================================================ -->
+    {% include "partials/cart_drawer.html" %}
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+
+    <!-- ============================================================
+         CONTENUTO PRINCIPALE — definito da ogni pagina figlia
+         ============================================================ -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">SP3CT4R</div>
+            <p class="footer-tagline">Techwear per l'era digitale.</p>
+            <p class="footer-copy">&copy; 2026 SP3CT4R. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <!-- Script del carrello caricato in ogni pagina (aggiorna il badge in header) -->
+    <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

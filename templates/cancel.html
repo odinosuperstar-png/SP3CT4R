@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Pagamento Annullato — SP3CT4R{% endblock %}
+
+{% block content %}
+<div class="outcome-page">
+    <div class="outcome-icon alert">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </div>
+    <h1>Pagamento non completato</h1>
+    <p>
+        Il pagamento è stato annullato o non è andato a buon fine. Il tuo
+        carrello è ancora salvato: puoi riprovare quando vuoi.
+    </p>
+    <a href="{{ url_for('checkout.checkout') }}" class="btn btn-primary clip-btn">Torna al Checkout</a>
+</div>
+{% endblock %}

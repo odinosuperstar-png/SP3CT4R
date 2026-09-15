@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Pagina non trovata — SP3CT4R{% endblock %}
+
+{% block content %}
+<div class="outcome-page">
+    <div class="outcome-icon alert">
+        <svg viewBox="0 0 24 24"><path d="M12 8v5M12 16h.01"/><circle cx="12" cy="12" r="9"/></svg>
+    </div>
+    <h1>404 — Segnale perso</h1>
+    <p>La pagina che stai cercando non esiste o è stata spostata.</p>
+    <a href="{{ url_for('main.home') }}" class="btn btn-primary clip-btn">Torna alla Home</a>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Shop — SP3CT4R{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="shop-header">
+        <h1>Catalogo</h1>
+        <div class="filter-pills">
+            <a href="{{ url_for('main.shop') }}" class="filter-pill {% if not categoria_attiva %}active{% endif %}">
+                Tutti
+            </a>
+            {% for categoria in categorie %}
+            <a href="{{ url_for('main.shop') }}?categoria={{ categoria }}"
+               class="filter-pill {% if categoria_attiva == categoria %}active{% endif %}">
+                {{ categoria }}
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="product-grid">
+        {% for prodotto in prodotti %}
+        {% include "partials/product_card.html" %}
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

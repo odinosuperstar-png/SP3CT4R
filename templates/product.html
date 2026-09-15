@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}{{ prodotto.nome }} — SP3CT4R{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="product-detail">
+
+        <div class="product-detail-media">
+            <img src="{{ prodotto.immagine }}" alt="{{ prodotto.nome }}">
+        </div>
+
+        <div class="product-detail-info">
+            <p class="product-detail-category">{{ prodotto.categoria|upper }}</p>
+            <h1 class="product-detail-name">{{ prodotto.nome }}</h1>
+            <p class="product-detail-price">€{{ "%.2f"|format(prodotto.prezzo) }}</p>
+            <p class="product-detail-description">{{ prodotto.descrizione }}</p>
+
+            <!-- Selettore taglia: puramente visuale in questa struttura iniziale,
+                 pronto per essere collegato a un inventario reale per taglia -->
+            <p class="selector-label">Taglia</p>
+            <div class="size-selector" id="size-selector">
+                {% for taglia in prodotto.taglie %}
+                <button type="button" class="size-option {% if loop.first %}selected{% endif %}">{{ taglia }}</button>
+                {% endfor %}
+            </div>
+
+            <div class="qty-selector-row">
+                <div>
+                    <p class="selector-label">Quantità</p>
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn" id="product-qty-decrease">−</button>
+                        <span class="qty-value" id="product-qty-value">1</span>
+                        <button type="button" class="qty-btn" id="product-qty-increase">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-detail-actions">
+                <button type="button" class="btn btn-primary clip-btn" id="add-to-cart-btn">
+                    Aggiungi al Carrello
+                </button>
+                <button type="button" class="btn btn-ghost clip-btn">
+                    Aggiungi alla Wishlist
+                </button>
+            </div>
+
+            <div class="product-meta-list">
+                <div class="product-meta-row">
+                    <span>Codice riferimento</span>
+                    <span>{{ prodotto.codice_riferimento }}</span>
+                </div>
+                <div class="product-meta-row">
+                    <span>Spedizione</span>
+                    <span>2-5 giorni lavorativi</span>
+                </div>
+                <div class="product-meta-row">
+                    <span>Resi</span>
+                    <span>Gratuiti entro 30 giorni</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if prodotti_correlati %}
+    <div class="section-heading">
+        <h2>Potrebbe interessarti</h2>
+        <span class="mono-tag">STESSA CATEGORIA</span>
+    </div>
+    <div class="product-grid">
+        {% for prodotto in prodotti_correlati %}
+        {% include "partials/product_card.html" %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Logica locale della pagina prodotto: selezione taglia, selezione
+    // quantità e chiamata alla funzione globale aggiungiAlCarrello()
+    // definita in static/js/cart.js
+    document.addEventListener("DOMContentLoaded", () => {
+        const idProdotto = {{ prodotto.id }};
+
+        // --- Selezione taglia (evidenzia l'opzione scelta) ---
+        document.querySelectorAll("#size-selector .size-option").forEach(bottone => {
+            bottone.addEventListener("click", () => {
+                document.querySelectorAll("#size-selector .size-option").forEach(b => b.classList.remove("selected"));
+                bottone.classList.add("selected");
+            });
+        });
+
+        // --- Selettore quantità ---
+        const valoreQuantita = document.getElementById("product-qty-value");
+        document.getElementById("product-qty-increase").addEventListener("click", () => {
+            valoreQuantita.textContent = parseInt(valoreQuantita.textContent, 10) + 1;
+        });
+        document.getElementById("product-qty-decrease").addEventListener("click", () => {
+            const valoreAttuale = parseInt(valoreQuantita.textContent, 10);
+            if (valoreAttuale > 1) {
+                valoreQuantita.textContent = valoreAttuale - 1;
+            }
+        });
+
+        // --- Aggiungi al carrello ---
+        document.getElementById("add-to-cart-btn").addEventListener("click", () => {
+            const quantita = parseInt(valoreQuantita.textContent, 10);
+            aggiungiAlCarrello(idProdotto, quantita);
+        });
+    });
+</script>
+{% endblock %}

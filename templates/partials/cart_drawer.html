@@ -1,0 +1,27 @@
+<!--
+    Cart Drawer: pannello laterale del carrello.
+    Il contenuto (articoli, subtotale) viene popolato dinamicamente via
+    JavaScript (static/js/cart.js) attraverso chiamate a /cart/data,
+    così da rimanere sempre sincronizzato con la sessione lato server.
+-->
+<aside class="cart-drawer" id="cart-drawer" aria-label="Carrello">
+    <div class="cart-drawer-header">
+        <h3>Il Tuo Carrello</h3>
+        <button class="close-drawer-btn" id="close-drawer-btn" aria-label="Chiudi il carrello">&times;</button>
+    </div>
+
+    <div class="cart-drawer-body" id="cart-drawer-body">
+        <p class="cart-empty-msg" id="cart-empty-msg">Il tuo carrello è vuoto.</p>
+    </div>
+
+    <div class="cart-drawer-footer">
+        <div class="cart-subtotal-row">
+            <span>Subtotale</span>
+            <span id="cart-subtotal">€0,00</span>
+        </div>
+        <p class="cart-shipping-note">Spedizione e tasse calcolate al checkout.</p>
+        <a href="{{ url_for('checkout.checkout') }}" class="btn btn-primary btn-full" id="checkout-btn">
+            Procedi al Checkout
+        </a>
+    </div>
+</aside>
