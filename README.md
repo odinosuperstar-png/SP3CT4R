@@ -32,4 +32,5 @@ Connect with the project across our official platforms:
 * **TikTok:** SP3CT4R
 * **X (Twitter):** @sp3ct4rClothing
 * **YouTube:** @SP3CT4R
-
+## Drop 
+* **Drop 01:** Out: sunday 20 september 2026
