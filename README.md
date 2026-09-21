@@ -36,6 +36,16 @@ Connect with the project across our official platforms:
 * **YouTube:** @SP3CT4R
 ## Drop 
 * **Drop 01:** Out: sunday 20 september 2026
+
+### Altre nostre pagine
+* **Repositery Git-hub:** https://github.com/odinosuperstar-png/PackHub/blob/main/README.md
+* **Reddit:** https://www.reddit.com/r/SP3CT4R/comments/1wdq0vc/sp3ct4r/
+* **Reddit (2):** https://www.reddit.com/r/RoDevItalia/comments/1wmhx37/packhub/
+* **Reddit (3):** https://www.reddit.com/r/windowsapps/comments/1wmhxhm/packhub/
+* **Reddit (4):** https://www.reddit.com/r/foss/comments/1wmhwof/packhub/
+* **Reddit (5):** https://www.reddit.com/r/Repcnbuy/comments/1wmi2ok/packhub/
+* **Website:** packhub-silk.vercel.app
+* **Contact E-Mail:** odinosuperstar@gmail.com
  ---
 ### 🔒 Legal Notice
 © 2026 Anomalies Lab. All rights reserved. 
