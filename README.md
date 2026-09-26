@@ -46,6 +46,10 @@ Connect with the project across our official platforms:
 * **Reddit (5):** https://www.reddit.com/r/Repcnbuy/comments/1wmi2ok/packhub/
 * **Website:** packhub-silk.vercel.app
 * **Contact E-Mail:** odinosuperstar@gmail.com
+
+### Altri nostri siti web:
+* **Website:** ultimora-notizie.vercel.app
+
  ---
 ### 🔒 Legal Notice
 © 2026 Anomalies Lab. All rights reserved. 
