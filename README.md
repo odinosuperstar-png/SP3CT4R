@@ -44,11 +44,11 @@ Connect with the project across our official platforms:
 * **Reddit (3):** https://www.reddit.com/r/windowsapps/comments/1wmhxhm/packhub/
 * **Reddit (4):** https://www.reddit.com/r/foss/comments/1wmhwof/packhub/
 * **Reddit (5):** https://www.reddit.com/r/Repcnbuy/comments/1wmi2ok/packhub/
-* **Website:** packhub-silk.vercel.app
+* **Website:** https://packhub-silk.vercel.app
 * **Contact E-Mail:** odinosuperstar@gmail.com
 
 ### Altri nostri siti web:
-* **Website:** ultimora-notizie.vercel.app
+* **Website:** https://ultimora-notizie.vercel.app
 * **GitHub README.md:** https://github.com/odinosuperstar-png/Ultim-ora-Notizie/blob/main/README.md
 
  ---
