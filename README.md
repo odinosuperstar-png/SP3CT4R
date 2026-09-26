@@ -48,7 +48,7 @@ Connect with the project across our official platforms:
 * **Contact E-Mail:** odinosuperstar@gmail.com
 
 ### Altri nostri siti web:
-* **Website:** https://ultimora-notizie.vercel.app
+* **Website:** https://ultimoranotizie.com
 * **GitHub README.md:** https://github.com/odinosuperstar-png/Ultim-ora-Notizie/blob/main/README.md
 
  ---
