@@ -49,6 +49,7 @@ Connect with the project across our official platforms:
 
 ### Altri nostri siti web:
 * **Website:** ultimora-notizie.vercel.app
+* **GitHub README.md:** https://github.com/odinosuperstar-png/Ultim-ora-Notizie/blob/main/README.md
 
  ---
 ### 🔒 Legal Notice
