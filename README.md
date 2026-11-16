@@ -46,8 +46,16 @@ Connect with the project across our official platforms:
 * **Reddit (5):** https://www.reddit.com/r/Repcnbuy/comments/1wmi2ok/packhub/
 * **Website:** https://packhub-silk.vercel.app
 * **Contact E-Mail:** odinosuperstar@gmail.com
+### another our project
+<h1 align="center">Ullarium (ULL)</h1>
 
+<p align="center">
+  <b>Una blockchain Layer 1 indipendente che chiunque può minare con la CPU del proprio computer.</b><br>
+  Proof of Work · blocchi da 3 minuti · tetto fisso di 4.200.000 ULL · nessun premine
+</p> 
+* **README:** https://github.com/odinosuperstar-png/ullarium
 ### Altri nostri siti web:
+* **Our crypto:** https://github.com/odinosuperstar-png/ullarium
 * **Website:** https://ultimoranotizie.com
 * **GitHub README.md:** https://github.com/odinosuperstar-png/Ultim-ora-Notizie/blob/main/README.md
 
